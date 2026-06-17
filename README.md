@@ -1,16 +1,43 @@
-# React + Vite
+# Document Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+A React-based Document Management System developed as part of a Front-End Developer assignment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* OTP Authentication
+* Document Upload
+* Category and Subcategory Selection
+* Tags and Remarks
+* Document Search
+* Preview and Download Actions
+* Admin User Creation
+* Bootstrap Based User Interface
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+* React
+* Vite
+* React Router DOM
+* Axios
+* Bootstrap
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+
+npm install
+
+## Run Application
+
+npm run dev
+
+## Modules
+
+* Login Module
+* Upload Module
+* Search Module
+* Admin Module
+
+## Notes
+
+The project integrates with the provided backend APIs for authentication, upload and search operations.
