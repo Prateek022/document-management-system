@@ -1,10 +1,48 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Search() {
+    const [results, setResults] = useState([]);
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
     const [category, setCategory] = useState("");
     const [tags, setTags] = useState("");
+    const handleSearch = async () => {
+    try {
+    const response = await axios.post(
+        "https://apis.allsoft.co/api/documentManagement/searchDocumentEntry",
+        {
+        major_head: category,
+        minor_head: "",
+        from_date: fromDate,
+        to_date: toDate,
+        tags: tags
+            .split(",")
+            .filter((tag) => tag.trim() !== "")
+            .map((tag) => ({
+            tag_name: tag.trim(),
+        })),
+        uploaded_by: "",
+        start: 0,
+        length: 10,
+        filterId: "",
+        search: {
+            value: "",
+        },
+    },
+    {
+        headers: {
+            token: "your_generated_token",
+        },
+    }
+    );
+
+    console.log(response.data);
+    setResults(response.data.data || []);
+} catch (error) {
+    console.error(error);
+}
+};
 
     return (
     <div>
@@ -37,7 +75,18 @@ function Search() {
         value={tags}
         onChange={(e) => setTags(e.target.value)}
         />
-        <button>Search</button>
+        <button onClick={handleSearch}>
+        Search
+</button>
+<h2>Results</h2>
+
+<ul>
+    {results.map((item, index) => (
+    <li key={index}>
+        {item.document_name || item.file_name || "Document"}
+    </li>
+    ))}
+</ul>
     </div>
 );
 }
