@@ -5,6 +5,9 @@ function Upload() {
     const [category, setCategory] = useState("");
     const [subCategory, setSubCategory] = useState("");
     const [remarks, setRemarks] = useState("");
+    const handleUpload = () => {
+    console.log("Upload clicked");
+};
     return (
     <div>
     <input
@@ -65,8 +68,12 @@ function Upload() {
             onChange={(e) => setSelectedFile(e.target.files[0])}
         />
         <p>{selectedFile?.name}</p>
+    <button onClick={handleUpload}>
+    Upload Document
+</button>
     </div>
 );
 }
+
 
 export default Upload;
