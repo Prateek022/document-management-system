@@ -33,7 +33,8 @@ function Login() {
         }
         );
 
-        console.log(response.data);
+        console.log("Verify OTP Response:", response.data);
+        setMessage(response.data.data || response.data.message);
     } catch (error) {
         console.error(error);
     }
