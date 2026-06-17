@@ -28,11 +28,21 @@ function Upload() {
 
     formData.append("data", JSON.stringify(data));
 
-    console.log("Payload:", data);
+    const response = await axios.post(
+    "https://apis.allsoft.co/api/documentManagement/saveDocumentEntry",
+    formData,
+    {
+    headers: {
+        token: "your_generated_token",
+    },
+    }
+);
+
+console.log(response.data);
 
 } catch (error) {
     console.error(error);
-}
+    }
 };  
     return (
     <div>
