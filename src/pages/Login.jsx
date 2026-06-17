@@ -40,11 +40,12 @@ function Login() {
     }
     };
     return (
-    <div className="container mt-5">
-    <h1>Document Management System</h1>
-    <p>Login using OTP</p>
+        <div className="container mt-5">
+        <div className="card p-4 shadow">
+        <h1 className="mb-3">Document Management System</h1>
+        <p className="text-muted">Login using OTP</p>
         <input
-        className="form-control"
+        className="form-control mb-3"
         type="text"
         placeholder="Enter Mobile Number"
         value={mobileNumber}
@@ -52,16 +53,16 @@ function Login() {
 />
 
         <button 
-        className="btn btn-primary mt-3"
+        className="btn btn-primary mb-3"
         onClick={handleGenerateOTP}>
         Generate OTP
         </button>
 
-        <p>{message}</p>
+        <p className="text-danger mt-2">{message}</p>   
 
         {showOtpField && (
         <input
-            className="form-control mt-3"
+            className="form-control mb-3"
             type="text"
             placeholder="Enter OTP"
             value={otp}
@@ -71,11 +72,12 @@ function Login() {
 
             {showOtpField && (
         <button 
-        
+        className="btn btn-success"
         onClick={handleVerifyOTP}>
             Verify OTP
         </button>
         )}
+    </div>
     </div>
     );
 }
