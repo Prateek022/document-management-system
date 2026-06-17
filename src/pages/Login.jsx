@@ -4,6 +4,8 @@ import axios from "axios";
 function Login() {
 const [mobileNumber, setMobileNumber] = useState("");
 const [message, setMessage] = useState("");
+const [otp, setOtp] = useState("");
+const [showOtpField, setShowOtpField] = useState(false);
 
 
 const handleGenerateOTP = async () => {
@@ -16,6 +18,8 @@ const handleGenerateOTP = async () => {
     );
 
     setMessage(response.data.data);
+    setShowOtpField(true);
+
 } catch (error) {
     console.error(error);
 }
@@ -34,8 +38,20 @@ return (
     Generate OTP
 </button>
     <p>{message}</p>
+{showOtpField && (
+<input
+    type="text"
+    placeholder="Enter OTP"
+    value={otp}
+    onChange={(e) => setOtp(e.target.value)}
+/> 
+)}
+
+{showOtpField && (
+<button>
+    Verify OTP
+</button> )}
     </div>
-    
 );
 }
 
