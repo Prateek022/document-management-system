@@ -1,11 +1,25 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Login() {
 const [mobileNumber, setMobileNumber] = useState("");
+const [message, setMessage] = useState("");
 
-const handleGenerateOTP = () => {
-    console.log("Generate OTP clicked");
-};    
+
+const handleGenerateOTP = async () => {
+    try {
+    const response = await axios.post(
+                "https://apis.allsoft.co/api/documentManagement/generateOTP",
+                {
+        mobile_number: mobileNumber,
+            }
+    );
+
+    setMessage(response.data.data);
+} catch (error) {
+    console.error(error);
+}
+};   
 return (
     <div>
         <h1>Document Management System</h1>
@@ -19,7 +33,7 @@ return (
     <button onClick={handleGenerateOTP}>
     Generate OTP
 </button>
-    <p>Mobile Number: {mobileNumber}</p>
+    <p>{message}</p>
     </div>
     
 );
