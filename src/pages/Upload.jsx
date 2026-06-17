@@ -1,13 +1,39 @@
 import { useState } from "react";
+import axios from "axios";
 function Upload() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [tags, setTags] = useState("");
     const [category, setCategory] = useState("");
     const [subCategory, setSubCategory] = useState("");
     const [remarks, setRemarks] = useState("");
-    const handleUpload = () => {
-    console.log("Upload clicked");
-};
+    const [documentDate, setDocumentDate] = useState("");
+    const handleUpload = async () => {
+    try {
+    const formData = new FormData();
+
+    formData.append("file", selectedFile);
+
+    const data = {
+        major_head: category,
+        minor_head: subCategory,
+        document_date: documentDate,
+        document_remarks: remarks,
+        tags: tags
+        .split(",")
+        .map((tag) => ({
+            tag_name: tag.trim(),
+        })),
+        user_id: "prateek",
+    };
+
+    formData.append("data", JSON.stringify(data));
+
+    console.log("Payload:", data);
+
+} catch (error) {
+    console.error(error);
+}
+};  
     return (
     <div>
     <input
@@ -24,7 +50,11 @@ function Upload() {
 />
     <h1>Upload Documents</h1>
 
-    <input type="date" />
+    <input
+    type="date"
+    value={documentDate}
+    onChange={(e) => setDocumentDate(e.target.value)}
+/>
 
     <br />
     <br />
