@@ -80,13 +80,31 @@ function Search() {
 </button>
 <h2>Results</h2>
 
-<ul>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Document</th>
+        <th>Preview</th>
+        <th>Download</th>
+    </tr>
+    </thead>
+
+    <tbody>
     {results.map((item, index) => (
-    <li key={index}>
-        {item.document_name || item.file_name || "Document"}
-    </li>
+        <tr key={index}>
+        <td>{item.document_name || item.file_name || "Document"}</td>
+
+        <td>
+            <button>Preview</button>
+        </td>
+
+        <td>
+            <button>Download</button>
+        </td>
+        </tr>
     ))}
-</ul>
+    </tbody>
+</table>
     </div>
 );
 }
